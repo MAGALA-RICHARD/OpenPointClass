@@ -75,7 +75,7 @@ void Scale::build() {
             orderAxis[idx](1, 1) = 0.f;
 
             heightMin[idx] = std::numeric_limits<float>::max();
-            heightMax[idx] = std::numeric_limits<float>::min();
+            heightMax[idx] = std::numeric_limits<float>::lowest();
 
             for (size_t const &i : neighborIds) {
                 Eigen::Vector3f p(scaledSet->points[i][0],
