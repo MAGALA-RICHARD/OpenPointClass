@@ -25,6 +25,7 @@ void getTrainingData(const std::vector<std::string> &filenames,
     const double radius,
     const int maxSamples,
     const std::vector<int> &asprsClasses,
+    const std::vector<std::string> &excludedFeatures,
     F storeFeatures,
     I init) {
     auto labels = getTrainingLabels();
@@ -55,7 +56,7 @@ void getTrainingData(const std::vector<std::string> &filenames,
         }
 
         auto scales = computeScales(numScales, pointSet, *startResolution, radius);
-        auto features = getFeatures(scales);
+        auto features = getFeatures(scales, excludedFeatures);
         std::cout << "Features: " << features.size() << std::endl;
 
         if (i == 0) init(features.size(), labels.size());

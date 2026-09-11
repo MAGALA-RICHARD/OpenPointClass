@@ -2,9 +2,9 @@
 #include "point_io.hpp"
 #include "classifier.hpp"
 #include "randomforest.hpp"
-
+#include "model_metadata.hpp"
 #include "vendor/cxxopts.hpp"
-
+#include <ostream>
 #ifdef WITH_GBT
 #include "gbm.hpp"
 #endif
@@ -56,6 +56,11 @@ int main(int argc, char **argv) {
         // Read points
         const auto inputFile = result["input"].as<std::string>();
         const auto modelFile = result["model"].as<std::string>();
+        const auto excludedFeatures = loadExcludedFeatures(modelFile);
+
+        std::cout << "Loaded " << excludedFeatures.size()
+          << " excluded features: ";
+        std::cout << std::endl;
         const auto outputFile = result["output"].as<std::string>();
         std::vector<int> skip = {};
         if (result.count("skip")) skip = result["skip"].as<std::vector<int>>();
@@ -96,7 +101,7 @@ int main(int argc, char **argv) {
 
         std::cout << "Starting resolution: " << startResolution << std::endl;
 
-        const auto features = getFeatures(computeScales(numScales, pointSet, startResolution, radius));
+        const auto features = getFeatures(computeScales(numScales, pointSet, startResolution, radius),excludedFeatures);
         std::cout << "Features: " << features.size() << std::endl;
 
         const auto eval = result["eval"].as<bool>();

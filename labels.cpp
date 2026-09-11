@@ -29,6 +29,7 @@ std::vector<Label> getLabels() {
     l.emplace_back("temporal_exclusion", 19, 22, Color(128, 220, 128));
 
     l.emplace_back("human_made_object", 20, 64, Color(255, 255, 0));
+    l.emplace_back("flower", 21, 65, Color(255, 255, 0));
 
 
     return l;

@@ -9,7 +9,8 @@ RandomForest *train(const std::vector<std::string> &filenames,
     const int treeDepth,
     const double radius,
     const int maxSamples,
-    const std::vector<int> &classes) {
+    const std::vector<int> &classes,
+    const std::vector<std::string> &excludedFeatures) {
 
     ForestParams params;
     params.n_trees = numTrees;
@@ -20,7 +21,7 @@ RandomForest *train(const std::vector<std::string> &filenames,
     std::vector<float> ft;
     std::vector<int> gt;
 
-    getTrainingData(filenames, startResolution, numScales, radius, maxSamples, classes,
+    getTrainingData(filenames, startResolution, numScales, radius, maxSamples, classes, excludedFeatures,
         [&ft, &gt](const std::vector<Feature *> &features, size_t idx, int g) {
             for (std::size_t f = 0; f < features.size(); f++) {
                 ft.push_back(features[f]->getValue(idx));
@@ -39,7 +40,6 @@ RandomForest *train(const std::vector<std::string> &filenames,
     rtrees->params.resolution = *startResolution;
     rtrees->params.radius = radius;
     rtrees->params.numScales = numScales;
-
     return rtrees;
 }
 

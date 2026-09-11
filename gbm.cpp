@@ -7,14 +7,16 @@
 
 namespace gbm {
 
-Boosting *train(const std::vector<std::string> &filenames,
+Boosting *train(
+    const std::vector<std::string> &filenames,
     double *startResolution,
-    const int numScales,
-    const int numTrees,
-    const int treeDepth,
-    const double radius,
-    const int maxSamples,
-    const std::vector<int> &classes) {
+    int numScales,
+    int numTrees,
+    int treeDepth,
+    double radius,
+    int maxSamples,
+    const std::vector<int> &classes,
+    const std::vector<std::string> &excludedFeatures) {
 
     std::vector<float> gt;
     std::vector< std::vector<double> > featureRows;
@@ -23,7 +25,7 @@ Boosting *train(const std::vector<std::string> &filenames,
     size_t numFeats;
     int numClass;
 
-    getTrainingData(filenames, startResolution, numScales, radius, maxSamples, classes,
+    getTrainingData(filenames, startResolution, numScales, radius, maxSamples, classes,  excludedFeatures,
         [&featureRows, &featuresData, &featuresIdx, &gt](const std::vector<Feature *> &features, const size_t idx, const int g) {
             const size_t row = featureRows.size();
             featureRows.emplace_back();

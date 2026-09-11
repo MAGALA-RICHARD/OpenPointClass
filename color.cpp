@@ -1,6 +1,6 @@
 #include <array>
 #include "color.hpp"
-
+#include <iostream>
 std::array<float, 3> rgb2hsv(double r, double g, double b) {
     r /= 255.;
     g /= 255.;
@@ -23,4 +23,25 @@ std::array<float, 3> rgb2hsv(double r, double g, double b) {
     const double value = 100. * color_max;
 
     return { static_cast<float>(hue), static_cast<float>(saturation), static_cast<float>(value) };
+}
+
+//
+//
+float greenLeafIndex(double r, double g, double b) {
+   r /= 255.0;
+   g  /= 255.0;
+   b /= 255.0;
+    return static_cast<float>(
+        ((r + g) / 2.0) - b
+    );
+}
+
+float flowerIndex(double r, double g, double b) {
+    r /= 255.0;
+    g  /= 255.0;
+    b /= 255.0;
+    const float ans = (r - b) * (r + b);
+    return static_cast<float>(
+        ans * (g - b) / 0.5
+    );
 }

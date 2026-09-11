@@ -3,6 +3,9 @@
 
 #include <Eigen/Dense>
 #include "scale.hpp"
+#include <string>
+#include <vector>
+
 
 class Feature {
 protected:
@@ -194,6 +197,36 @@ public:
     }
 };
 
-std::vector<Feature *> getFeatures(const std::vector<Scale *> &scales);
+class GreenLeafIndex : public Feature {
+public:
+    GreenLeafIndex(Scale *s) : Feature(s) {
+        this->setName("green_leaf_index");
+    }
+
+    float getValue(size_t i) override {
+        const double r = s->pSet->colors[i][0];
+        const double g = s->pSet->colors[i][1];
+        const double b = s->pSet->colors[i][2];
+
+        return greenLeafIndex(r, g, b);
+    }
+};
+class FlowerIndex : public Feature {
+public:
+    FlowerIndex(Scale *s) : Feature(s) {
+        this->setName("flower_index");
+    }
+    float getValue(size_t i) override {
+        const double r = s->pSet->colors[i][0];
+        const double g = s->pSet->colors[i][1];
+        const double b = s->pSet->colors[i][2];
+
+        return flowerIndex(r, g, b);
+    }
+};
+
+std::vector<Feature *> getFeatures(
+    const std::vector<Scale *> &scales,
+    const std::vector<std::string> &excludedFeatures = {});
 
 #endif

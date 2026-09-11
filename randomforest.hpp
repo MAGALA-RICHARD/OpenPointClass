@@ -24,7 +24,8 @@ RandomForest *train(const std::vector<std::string> &filenames,
     int treeDepth,
     double radius,
     int maxSamples,
-    const std::vector<int> &classes);
+    const std::vector<int> &classes,
+    const std::vector<std::string> &excludedFeatures);
 
 RandomForest *loadForest(const std::string &modelFilename);
 void saveForest(RandomForest *rtrees, const std::string &modelFilename);

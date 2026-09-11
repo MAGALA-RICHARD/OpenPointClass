@@ -52,11 +52,23 @@ if (WITH_GBT)
 
     set(LIGHTGBM_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/local")
     include(ExternalProject)
-    ExternalProject_Add(lightgbm
-        GIT_REPOSITORY  https://github.com/microsoft/LightGBM
-        GIT_TAG e4231205a3bac13662a81db9433ddaea8924fbce
-        CMAKE_ARGS -DBUILD_STATIC_LIB=ON
-                -DCMAKE_INSTALL_PREFIX=${LIGHTGBM_PREFIX}
+
+    ExternalProject_Add(
+        lightgbm
+
+        GIT_REPOSITORY
+            https://github.com/microsoft/LightGBM
+
+        GIT_TAG
+            e4231205a3bac13662a81db9433ddaea8924fbce
+
+        CMAKE_ARGS
+            -DBUILD_STATIC_LIB=ON
+            -DCMAKE_INSTALL_PREFIX=${LIGHTGBM_PREFIX}
+
+            # Required for this older LightGBM revision when
+            # building with CMake 4.x.
+            -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     )
     add_library(lib_lightgbm SHARED IMPORTED)
 
@@ -90,8 +102,8 @@ endif()
 include_directories(${EIGEN3_INCLUDE_DIR})
 include_directories(vendor/ethz)
 
-set(SOURCES classifier.cpp scale.cpp point_io.cpp randomforest.cpp features.cpp color.cpp labels.cpp)
-set(HEADERS classifier.hpp scale.hpp point_io.hpp randomforest.hpp features.hpp color.hpp labels.hpp statistics.hpp)
+set(SOURCES classifier.cpp scale.cpp point_io.cpp randomforest.cpp features.cpp color.cpp labels.cpp  model_metadata.cpp)
+set(HEADERS classifier.hpp scale.hpp point_io.hpp randomforest.hpp features.hpp color.hpp labels.hpp statistics.hpp model_metadata.hpp)
 if (WITH_GBT)
     list(APPEND SOURCES gbm.cpp)
     list(APPEND HEADERS gbm.hpp)

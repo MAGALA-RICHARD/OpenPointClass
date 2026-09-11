@@ -4,7 +4,8 @@
 #include <cstdint>
 
 std::array<float, 3> rgb2hsv(double r, double g, double b);
-
+float greenLeafIndex(double r, double g, double b);
+float flowerIndex(double r, double g, double b);
 struct Color {
     uint8_t r, g, b;
     Color() : r(255), g(255), b(255) {};
