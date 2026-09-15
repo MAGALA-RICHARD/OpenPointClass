@@ -5,19 +5,19 @@ Regularization parseRegularization(const std::string &regularization) {
     if (regularization == "local_smooth") return LocalSmooth;
     throw std::runtime_error("Invalid regularization value: " + regularization);
 }
+ClassifierType fingerprint(const std::string& file) {
+    std::ifstream in(file, std::ios::binary);
+    if (!in) throw std::runtime_error("Cannot open " + file);
 
-ClassifierType fingerprint(const std::string &modelFile) {
-    std::ifstream ifs(modelFile.c_str(), std::ios::binary);
-    if (!ifs.is_open()) throw std::runtime_error("Cannot open " + modelFile);
+    char magic[4];
+    if (!in.read(magic, 4))
+      throw std::runtime_error("Invalid model file: " + file);
 
-    // Read first 4 bytes
-    char buf[4] = { 0x00, 0x00, 0x00, 0x00 };
-    ifs.read(reinterpret_cast<char *>(&buf), sizeof(char) * 4);
+    const std::string_view id(magic, 4);
+    std::cout << "Fingerprint: [" << id << "]\n";
+    if (id == "tree") return GradientBoostedTrees;
+    if (id == "svm_") return SupportVectorMachine;
+    return RandomForest;
 
-    ifs.close();
 
-    return buf[0] == 0x74 && buf[1] == 0x72 && buf[2] == 0x65 && buf[3] == 0x65 ?
-        GradientBoostedTrees :
-        RandomForest;
 }
-

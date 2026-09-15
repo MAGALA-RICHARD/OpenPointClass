@@ -78,7 +78,7 @@ std::vector<Feature *> getFeatures(const std::vector<Scale *> &scales,
        feats.push_back(reinterpret_cast<Feature *>(new GreenLeafIndex(scales[0])));
        feats.push_back(reinterpret_cast<Feature *>(new FlowerIndex(scales[0])));
     }
-    std::cout << "Excluded features received: " << excludedFeatures.size() << std::endl;
+    //std::cout << "Excluded features received: " << excludedFeatures.size() << std::endl;
     std::vector<Feature *> selected;
 
     for (Feature *feature : feats) {

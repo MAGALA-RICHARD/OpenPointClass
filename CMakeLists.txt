@@ -37,6 +37,7 @@ endif()
 find_package(OpenMP REQUIRED)
 find_package(Eigen3 REQUIRED)
 
+
 if (WITH_PDAL)
     find_package(PDAL)
     if (PDAL_FOUND)
@@ -102,8 +103,8 @@ endif()
 include_directories(${EIGEN3_INCLUDE_DIR})
 include_directories(vendor/ethz)
 
-set(SOURCES classifier.cpp scale.cpp point_io.cpp randomforest.cpp features.cpp color.cpp labels.cpp  model_metadata.cpp)
-set(HEADERS classifier.hpp scale.hpp point_io.hpp randomforest.hpp features.hpp color.hpp labels.hpp statistics.hpp model_metadata.hpp)
+set(SOURCES classifier.cpp scale.cpp point_io.cpp randomforest.cpp features.cpp color.cpp labels.cpp  model_metadata.cpp svm.cpp vendor/libsvm/svm.cpp)
+set(HEADERS classifier.hpp scale.hpp point_io.hpp randomforest.hpp features.hpp color.hpp labels.hpp statistics.hpp model_metadata.hpp svm.hpp  vendor/libsvm/svm.h)
 if (WITH_GBT)
     list(APPEND SOURCES gbm.cpp)
     list(APPEND HEADERS gbm.hpp)

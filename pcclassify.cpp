@@ -4,6 +4,8 @@
 #include "randomforest.hpp"
 #include "model_metadata.hpp"
 #include "vendor/cxxopts.hpp"
+#include "vendor/libsvm/svm.h"
+#include "svm.hpp"
 #include <ostream>
 #ifdef WITH_GBT
 #include "gbm.hpp"
@@ -85,6 +87,9 @@ int main(int argc, char **argv) {
             startResolution = rtrees->params.resolution;
             radius = rtrees->params.radius;
             numScales = rtrees->params.numScales;
+        } else if (ctype == SupportVectorMachine){
+            auto model = svm::loadSVM(modelFile);
+
         }
         #ifdef WITH_GBT
         else {

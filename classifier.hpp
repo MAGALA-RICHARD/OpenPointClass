@@ -14,7 +14,7 @@
 enum Regularization { None, LocalSmooth };
 Regularization parseRegularization(const std::string &regularization);
 
-enum ClassifierType { RandomForest, GradientBoostedTrees };
+enum ClassifierType { RandomForest, GradientBoostedTrees, SupportVectorMachine };
 ClassifierType fingerprint(const std::string &modelFile);
 
 

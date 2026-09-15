@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="opc"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\vcpkg\;CMake Files\..\vcpkg\buildtrees\;CMake Files\..\vcpkg\buildtrees\eigen3\;CMake Files\..\vcpkg\buildtrees\eigen3\x64-windows-dbg\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="D:/PrairiePro/OpenPointClass/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="libopc">
+				<Option output="D:/PrairiePro/OpenPointClass/cmake-build-debug/CMakeFiles/libopc.dir/libopc.objlib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/PrairiePro/OpenPointClass/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/PrairiePro/OpenPointClass/vendor/ethz"/>
+					<Add directory="D:/PrairiePro/vcpkg/buildtrees/eigen3/src/5.0.1-d487a628b0.clean"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 libopc"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="libopc/fast">
+				<Option output="D:/PrairiePro/OpenPointClass/cmake-build-debug/CMakeFiles/libopc.dir/libopc.objlib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/PrairiePro/OpenPointClass/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/PrairiePro/OpenPointClass/vendor/ethz"/>
+					<Add directory="D:/PrairiePro/vcpkg/buildtrees/eigen3/src/5.0.1-d487a628b0.clean"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 libopc/fast"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pctrain">
+				<Option output="D:/PrairiePro/OpenPointClass/cmake-build-debug/pctrain.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/PrairiePro/OpenPointClass/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/PrairiePro/OpenPointClass/vendor/ethz"/>
+					<Add directory="D:/PrairiePro/vcpkg/buildtrees/eigen3/src/5.0.1-d487a628b0.clean"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 pctrain"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pctrain/fast">
+				<Option output="D:/PrairiePro/OpenPointClass/cmake-build-debug/pctrain.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/PrairiePro/OpenPointClass/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/PrairiePro/OpenPointClass/vendor/ethz"/>
+					<Add directory="D:/PrairiePro/vcpkg/buildtrees/eigen3/src/5.0.1-d487a628b0.clean"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 pctrain/fast"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pcclassify">
+				<Option output="D:/PrairiePro/OpenPointClass/cmake-build-debug/pcclassify.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/PrairiePro/OpenPointClass/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/PrairiePro/OpenPointClass/vendor/ethz"/>
+					<Add directory="D:/PrairiePro/vcpkg/buildtrees/eigen3/src/5.0.1-d487a628b0.clean"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 pcclassify"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pcclassify/fast">
+				<Option output="D:/PrairiePro/OpenPointClass/cmake-build-debug/pcclassify.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/PrairiePro/OpenPointClass/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/PrairiePro/OpenPointClass/vendor/ethz"/>
+					<Add directory="D:/PrairiePro/vcpkg/buildtrees/eigen3/src/5.0.1-d487a628b0.clean"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2022.3.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 pcclassify/fast"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="D:/PrairiePro/OpenPointClass/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="D:/PrairiePro/OpenPointClass/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="list_install_components">
+				<Option working_dir="D:/PrairiePro/OpenPointClass/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install">
+				<Option working_dir="D:/PrairiePro/OpenPointClass/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/local">
+				<Option working_dir="D:/PrairiePro/OpenPointClass/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/strip">
+				<Option working_dir="D:/PrairiePro/OpenPointClass/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;D:/PrairiePro/OpenPointClass/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="D:/PrairiePro/OpenPointClass/classifier.cpp">
+			<Option target="libopc"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/classifier.hpp">
+			<Option target="libopc"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/cmake-build-debug/CMakeFiles/libopc.dir/classifier.cpp.obj">
+			<Option target="pctrain"/>
+			<Option target="pcclassify"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/cmake-build-debug/CMakeFiles/libopc.dir/color.cpp.obj">
+			<Option target="pctrain"/>
+			<Option target="pcclassify"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/cmake-build-debug/CMakeFiles/libopc.dir/features.cpp.obj">
+			<Option target="pctrain"/>
+			<Option target="pcclassify"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/cmake-build-debug/CMakeFiles/libopc.dir/labels.cpp.obj">
+			<Option target="pctrain"/>
+			<Option target="pcclassify"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/cmake-build-debug/CMakeFiles/libopc.dir/model_metadata.cpp.obj">
+			<Option target="pctrain"/>
+			<Option target="pcclassify"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/cmake-build-debug/CMakeFiles/libopc.dir/point_io.cpp.obj">
+			<Option target="pctrain"/>
+			<Option target="pcclassify"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/cmake-build-debug/CMakeFiles/libopc.dir/randomforest.cpp.obj">
+			<Option target="pctrain"/>
+			<Option target="pcclassify"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/cmake-build-debug/CMakeFiles/libopc.dir/scale.cpp.obj">
+			<Option target="pctrain"/>
+			<Option target="pcclassify"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/cmake-build-debug/CMakeFiles/libopc.dir/svm.cpp.obj">
+			<Option target="pctrain"/>
+			<Option target="pcclassify"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/cmake-build-debug/CMakeFiles/libopc.dir/vendor/libsvm/svm.cpp.obj">
+			<Option target="pctrain"/>
+			<Option target="pcclassify"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/color.cpp">
+			<Option target="libopc"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/color.hpp">
+			<Option target="libopc"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/features.cpp">
+			<Option target="libopc"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/features.hpp">
+			<Option target="libopc"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/labels.cpp">
+			<Option target="libopc"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/labels.hpp">
+			<Option target="libopc"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/model_metadata.cpp">
+			<Option target="libopc"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/model_metadata.hpp">
+			<Option target="libopc"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/pcclassify.cpp">
+			<Option target="pcclassify"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/pctrain.cpp">
+			<Option target="pctrain"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/point_io.cpp">
+			<Option target="libopc"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/point_io.hpp">
+			<Option target="libopc"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/randomforest.cpp">
+			<Option target="libopc"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/randomforest.hpp">
+			<Option target="libopc"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/scale.cpp">
+			<Option target="libopc"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/scale.hpp">
+			<Option target="libopc"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/statistics.hpp">
+			<Option target="libopc"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/svm.cpp">
+			<Option target="libopc"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/svm.hpp">
+			<Option target="libopc"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/vendor/libsvm/svm.cpp">
+			<Option target="libopc"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/vendor/libsvm/svm.h">
+			<Option target="libopc"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/../vcpkg/buildtrees/eigen3/x64-windows-dbg/Eigen3Config.cmake">
+			<Option virtualFolder="CMake Files\..\vcpkg\buildtrees\eigen3\x64-windows-dbg\"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/../vcpkg/buildtrees/eigen3/x64-windows-dbg/Eigen3ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\vcpkg\buildtrees\eigen3\x64-windows-dbg\"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/../vcpkg/buildtrees/eigen3/x64-windows-dbg/Eigen3Targets.cmake">
+			<Option virtualFolder="CMake Files\..\vcpkg\buildtrees\eigen3\x64-windows-dbg\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
