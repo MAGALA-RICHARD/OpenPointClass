@@ -1,6 +1,6 @@
 "C:\Program Files\JetBrains\CLion 2022.3.2\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" -S D:\PrairiePro\OpenPointClass -B D:\PrairiePro\OpenPointClass\cmake-build-debug
 Building with native optimizations
-CMake Warning at CMakeLists.txt:41 (find_package):
+CMake Warning at CMakeLists.txt:42 (find_package):
   By not providing "FindPDAL.cmake" in CMAKE_MODULE_PATH this project has
   asked CMake to find a package configuration file provided by "PDAL", but
   CMake did not find one.
@@ -17,7 +17,7 @@ CMake Warning at CMakeLists.txt:41 (find_package):
   installed.
 
 
-CMake Warning at CMakeLists.txt:45 (message):
+CMake Warning at CMakeLists.txt:46 (message):
   PDAL not found, LAS/LAZ support will not be built
 
 

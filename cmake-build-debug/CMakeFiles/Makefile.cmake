@@ -56,4 +56,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/libopc.dir/DependInfo.cmake"
   "CMakeFiles/pctrain.dir/DependInfo.cmake"
   "CMakeFiles/pcclassify.dir/DependInfo.cmake"
+  "CMakeFiles/pcdata.dir/DependInfo.cmake"
   )

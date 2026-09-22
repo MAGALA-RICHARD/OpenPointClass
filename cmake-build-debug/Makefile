@@ -199,6 +199,19 @@ pcclassify/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\pcclassify.dir\build.make CMakeFiles/pcclassify.dir/build
 .PHONY : pcclassify/fast
 
+#=============================================================================
+# Target rules for targets named pcdata
+
+# Build rule for target.
+pcdata: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 pcdata
+.PHONY : pcdata
+
+# fast build rule for target.
+pcdata/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\pcdata.dir\build.make CMakeFiles/pcdata.dir/build
+.PHONY : pcdata/fast
+
 classifier.obj: classifier.cpp.obj
 .PHONY : classifier.obj
 
@@ -342,6 +355,30 @@ pcclassify.s: pcclassify.cpp.s
 pcclassify.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\pcclassify.dir\build.make CMakeFiles/pcclassify.dir/pcclassify.cpp.s
 .PHONY : pcclassify.cpp.s
+
+pcdata.obj: pcdata.cpp.obj
+.PHONY : pcdata.obj
+
+# target to build an object file
+pcdata.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\pcdata.dir\build.make CMakeFiles/pcdata.dir/pcdata.cpp.obj
+.PHONY : pcdata.cpp.obj
+
+pcdata.i: pcdata.cpp.i
+.PHONY : pcdata.i
+
+# target to preprocess a source file
+pcdata.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\pcdata.dir\build.make CMakeFiles/pcdata.dir/pcdata.cpp.i
+.PHONY : pcdata.cpp.i
+
+pcdata.s: pcdata.cpp.s
+.PHONY : pcdata.s
+
+# target to generate assembly for a file
+pcdata.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\pcdata.dir\build.make CMakeFiles/pcdata.dir/pcdata.cpp.s
+.PHONY : pcdata.cpp.s
 
 pctrain.obj: pctrain.cpp.obj
 .PHONY : pctrain.obj
@@ -501,6 +538,7 @@ help:
 	@echo ... rebuild_cache
 	@echo ... libopc
 	@echo ... pcclassify
+	@echo ... pcdata
 	@echo ... pctrain
 	@echo ... classifier.obj
 	@echo ... classifier.i
@@ -520,6 +558,9 @@ help:
 	@echo ... pcclassify.obj
 	@echo ... pcclassify.i
 	@echo ... pcclassify.s
+	@echo ... pcdata.obj
+	@echo ... pcdata.i
+	@echo ... pcdata.s
 	@echo ... pctrain.obj
 	@echo ... pctrain.i
 	@echo ... pctrain.s

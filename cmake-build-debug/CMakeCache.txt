@@ -17,6 +17,9 @@
 //Build pcclassify
 BUILD_PCCLASSIFY:BOOL=ON
 
+//Build pcdata feature extractor
+BUILD_PCDATA:BOOL=ON
+
 //Build pctrain
 BUILD_PCTRAIN:BOOL=ON
 

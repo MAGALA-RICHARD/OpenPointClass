@@ -65,6 +65,7 @@ CMAKE_BINARY_DIR = D:\PrairiePro\OpenPointClass\cmake-build-debug
 all: CMakeFiles/libopc.dir/all
 all: CMakeFiles/pctrain.dir/all
 all: CMakeFiles/pcclassify.dir/all
+all: CMakeFiles/pcdata.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -75,6 +76,7 @@ preinstall:
 clean: CMakeFiles/libopc.dir/clean
 clean: CMakeFiles/pctrain.dir/clean
 clean: CMakeFiles/pcclassify.dir/clean
+clean: CMakeFiles/pcdata.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -110,7 +112,7 @@ CMakeFiles/libopc.dir/clean:
 CMakeFiles/pctrain.dir/all: CMakeFiles/libopc.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\pctrain.dir\build.make CMakeFiles/pctrain.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\pctrain.dir\build.make CMakeFiles/pctrain.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles --progress-num=13,14 "Built target pctrain"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles --progress-num=15,16 "Built target pctrain"
 .PHONY : CMakeFiles/pctrain.dir/all
 
 # Build rule for subdir invocation for target.
@@ -154,6 +156,32 @@ pcclassify: CMakeFiles/pcclassify.dir/rule
 CMakeFiles/pcclassify.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\pcclassify.dir\build.make CMakeFiles/pcclassify.dir/clean
 .PHONY : CMakeFiles/pcclassify.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/pcdata.dir
+
+# All Build rule for target.
+CMakeFiles/pcdata.dir/all: CMakeFiles/libopc.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\pcdata.dir\build.make CMakeFiles/pcdata.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\pcdata.dir\build.make CMakeFiles/pcdata.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles --progress-num=13,14 "Built target pcdata"
+.PHONY : CMakeFiles/pcdata.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/pcdata.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles 12
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/pcdata.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles 0
+.PHONY : CMakeFiles/pcdata.dir/rule
+
+# Convenience name for target.
+pcdata: CMakeFiles/pcdata.dir/rule
+.PHONY : pcdata
+
+# clean rule for target.
+CMakeFiles/pcdata.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\pcdata.dir\build.make CMakeFiles/pcdata.dir/clean
+.PHONY : CMakeFiles/pcdata.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

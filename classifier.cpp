@@ -3,7 +3,7 @@
 Regularization parseRegularization(const std::string &regularization) {
     if (regularization == "none") return None;
     if (regularization == "local_smooth") return LocalSmooth;
-    throw std::runtime_error("Invalid regularization value: " + regularization);
+    throw std::runtime_error("Invalid regularization value: " + regularization + ". value should be either: none or local_smooth");
 }
 ClassifierType fingerprint(const std::string& file) {
     std::ifstream in(file, std::ios::binary);

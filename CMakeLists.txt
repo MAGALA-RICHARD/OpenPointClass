@@ -142,3 +142,10 @@ if (BUILD_PCCLASSIFY)
     target_link_libraries(pcclassify libopc)
     install(TARGETS pcclassify RUNTIME DESTINATION bin)
 endif()
+
+set(BUILD_PCDATA ON CACHE BOOL "Build pcdata feature extractor")
+
+if(BUILD_PCDATA)
+    add_executable(pcdata pcdata.cpp)
+    target_link_libraries(pcdata PRIVATE libopc)
+endif()
