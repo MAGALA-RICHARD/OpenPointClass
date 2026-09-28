@@ -31,8 +31,7 @@
 namespace helpers
 {
     std::vector<std::string> tile_cloud(
-            const std::string& input, const std::string& output,
-            double length, double buffer, double origin_x, double origin_y)
+            const std::string& input, const std::string& output, double length, double buffer, double origin_x, double origin_y)
     {
         pdal::StageFactory factory;
         std::unique_ptr<pdal::Kernel> kernel(
