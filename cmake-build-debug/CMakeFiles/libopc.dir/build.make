@@ -218,6 +218,36 @@ CMakeFiles/libopc.dir/vendor/libsvm/svm.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libopc.dir/vendor/libsvm/svm.cpp.s"
 	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\PrairiePro\OpenPointClass\vendor\libsvm\svm.cpp -o CMakeFiles\libopc.dir\vendor\libsvm\svm.cpp.s
 
+CMakeFiles/libopc.dir/helper.cpp.obj: CMakeFiles/libopc.dir/flags.make
+CMakeFiles/libopc.dir/helper.cpp.obj: CMakeFiles/libopc.dir/includes_CXX.rsp
+CMakeFiles/libopc.dir/helper.cpp.obj: D:/PrairiePro/OpenPointClass/helper.cpp
+CMakeFiles/libopc.dir/helper.cpp.obj: CMakeFiles/libopc.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/libopc.dir/helper.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/libopc.dir/helper.cpp.obj -MF CMakeFiles\libopc.dir\helper.cpp.obj.d -o CMakeFiles\libopc.dir\helper.cpp.obj -c D:\PrairiePro\OpenPointClass\helper.cpp
+
+CMakeFiles/libopc.dir/helper.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libopc.dir/helper.cpp.i"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\PrairiePro\OpenPointClass\helper.cpp > CMakeFiles\libopc.dir\helper.cpp.i
+
+CMakeFiles/libopc.dir/helper.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libopc.dir/helper.cpp.s"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\PrairiePro\OpenPointClass\helper.cpp -o CMakeFiles\libopc.dir\helper.cpp.s
+
+CMakeFiles/libopc.dir/quadrat.cpp.obj: CMakeFiles/libopc.dir/flags.make
+CMakeFiles/libopc.dir/quadrat.cpp.obj: CMakeFiles/libopc.dir/includes_CXX.rsp
+CMakeFiles/libopc.dir/quadrat.cpp.obj: D:/PrairiePro/OpenPointClass/quadrat.cpp
+CMakeFiles/libopc.dir/quadrat.cpp.obj: CMakeFiles/libopc.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/libopc.dir/quadrat.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/libopc.dir/quadrat.cpp.obj -MF CMakeFiles\libopc.dir\quadrat.cpp.obj.d -o CMakeFiles\libopc.dir\quadrat.cpp.obj -c D:\PrairiePro\OpenPointClass\quadrat.cpp
+
+CMakeFiles/libopc.dir/quadrat.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libopc.dir/quadrat.cpp.i"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\PrairiePro\OpenPointClass\quadrat.cpp > CMakeFiles\libopc.dir\quadrat.cpp.i
+
+CMakeFiles/libopc.dir/quadrat.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libopc.dir/quadrat.cpp.s"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\PrairiePro\OpenPointClass\quadrat.cpp -o CMakeFiles\libopc.dir\quadrat.cpp.s
+
 libopc: CMakeFiles/libopc.dir/classifier.cpp.obj
 libopc: CMakeFiles/libopc.dir/scale.cpp.obj
 libopc: CMakeFiles/libopc.dir/point_io.cpp.obj
@@ -228,6 +258,8 @@ libopc: CMakeFiles/libopc.dir/labels.cpp.obj
 libopc: CMakeFiles/libopc.dir/model_metadata.cpp.obj
 libopc: CMakeFiles/libopc.dir/svm.cpp.obj
 libopc: CMakeFiles/libopc.dir/vendor/libsvm/svm.cpp.obj
+libopc: CMakeFiles/libopc.dir/helper.cpp.obj
+libopc: CMakeFiles/libopc.dir/quadrat.cpp.obj
 libopc: CMakeFiles/libopc.dir/build.make
 .PHONY : libopc
 

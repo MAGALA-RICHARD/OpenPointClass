@@ -86,12 +86,12 @@ clean: CMakeFiles/pcdata.dir/clean
 CMakeFiles/libopc.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\libopc.dir\build.make CMakeFiles/libopc.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\libopc.dir\build.make CMakeFiles/libopc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10 "Built target libopc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12 "Built target libopc"
 .PHONY : CMakeFiles/libopc.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/libopc.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles 12
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/libopc.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/libopc.dir/rule
@@ -112,12 +112,12 @@ CMakeFiles/libopc.dir/clean:
 CMakeFiles/pctrain.dir/all: CMakeFiles/libopc.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\pctrain.dir\build.make CMakeFiles/pctrain.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\pctrain.dir\build.make CMakeFiles/pctrain.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles --progress-num=15,16 "Built target pctrain"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles --progress-num=17,18 "Built target pctrain"
 .PHONY : CMakeFiles/pctrain.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/pctrain.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles 14
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/pctrain.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/pctrain.dir/rule
@@ -138,12 +138,12 @@ CMakeFiles/pctrain.dir/clean:
 CMakeFiles/pcclassify.dir/all: CMakeFiles/libopc.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\pcclassify.dir\build.make CMakeFiles/pcclassify.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\pcclassify.dir\build.make CMakeFiles/pcclassify.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles --progress-num=11,12 "Built target pcclassify"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles --progress-num=13,14 "Built target pcclassify"
 .PHONY : CMakeFiles/pcclassify.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/pcclassify.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles 14
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/pcclassify.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/pcclassify.dir/rule
@@ -164,12 +164,12 @@ CMakeFiles/pcclassify.dir/clean:
 CMakeFiles/pcdata.dir/all: CMakeFiles/libopc.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\pcdata.dir\build.make CMakeFiles/pcdata.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\pcdata.dir\build.make CMakeFiles/pcdata.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles --progress-num=13,14 "Built target pcdata"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles --progress-num=15,16 "Built target pcdata"
 .PHONY : CMakeFiles/pcdata.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/pcdata.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles 14
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/pcdata.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start D:\PrairiePro\OpenPointClass\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/pcdata.dir/rule

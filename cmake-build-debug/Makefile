@@ -284,6 +284,30 @@ features.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\libopc.dir\build.make CMakeFiles/libopc.dir/features.cpp.s
 .PHONY : features.cpp.s
 
+helper.obj: helper.cpp.obj
+.PHONY : helper.obj
+
+# target to build an object file
+helper.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\libopc.dir\build.make CMakeFiles/libopc.dir/helper.cpp.obj
+.PHONY : helper.cpp.obj
+
+helper.i: helper.cpp.i
+.PHONY : helper.i
+
+# target to preprocess a source file
+helper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\libopc.dir\build.make CMakeFiles/libopc.dir/helper.cpp.i
+.PHONY : helper.cpp.i
+
+helper.s: helper.cpp.s
+.PHONY : helper.s
+
+# target to generate assembly for a file
+helper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\libopc.dir\build.make CMakeFiles/libopc.dir/helper.cpp.s
+.PHONY : helper.cpp.s
+
 labels.obj: labels.cpp.obj
 .PHONY : labels.obj
 
@@ -428,6 +452,30 @@ point_io.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\libopc.dir\build.make CMakeFiles/libopc.dir/point_io.cpp.s
 .PHONY : point_io.cpp.s
 
+quadrat.obj: quadrat.cpp.obj
+.PHONY : quadrat.obj
+
+# target to build an object file
+quadrat.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\libopc.dir\build.make CMakeFiles/libopc.dir/quadrat.cpp.obj
+.PHONY : quadrat.cpp.obj
+
+quadrat.i: quadrat.cpp.i
+.PHONY : quadrat.i
+
+# target to preprocess a source file
+quadrat.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\libopc.dir\build.make CMakeFiles/libopc.dir/quadrat.cpp.i
+.PHONY : quadrat.cpp.i
+
+quadrat.s: quadrat.cpp.s
+.PHONY : quadrat.s
+
+# target to generate assembly for a file
+quadrat.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\libopc.dir\build.make CMakeFiles/libopc.dir/quadrat.cpp.s
+.PHONY : quadrat.cpp.s
+
 randomforest.obj: randomforest.cpp.obj
 .PHONY : randomforest.obj
 
@@ -549,6 +597,9 @@ help:
 	@echo ... features.obj
 	@echo ... features.i
 	@echo ... features.s
+	@echo ... helper.obj
+	@echo ... helper.i
+	@echo ... helper.s
 	@echo ... labels.obj
 	@echo ... labels.i
 	@echo ... labels.s
@@ -567,6 +618,9 @@ help:
 	@echo ... point_io.obj
 	@echo ... point_io.i
 	@echo ... point_io.s
+	@echo ... quadrat.obj
+	@echo ... quadrat.i
+	@echo ... quadrat.s
 	@echo ... randomforest.obj
 	@echo ... randomforest.i
 	@echo ... randomforest.s

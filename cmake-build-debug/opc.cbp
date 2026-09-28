@@ -291,6 +291,11 @@
 			<Option target="pcclassify"/>
 			<Option target="pcdata"/>
 		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/cmake-build-debug/CMakeFiles/libopc.dir/helper.cpp.obj">
+			<Option target="pctrain"/>
+			<Option target="pcclassify"/>
+			<Option target="pcdata"/>
+		</Unit>
 		<Unit filename="D:/PrairiePro/OpenPointClass/cmake-build-debug/CMakeFiles/libopc.dir/labels.cpp.obj">
 			<Option target="pctrain"/>
 			<Option target="pcclassify"/>
@@ -302,6 +307,11 @@
 			<Option target="pcdata"/>
 		</Unit>
 		<Unit filename="D:/PrairiePro/OpenPointClass/cmake-build-debug/CMakeFiles/libopc.dir/point_io.cpp.obj">
+			<Option target="pctrain"/>
+			<Option target="pcclassify"/>
+			<Option target="pcdata"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/cmake-build-debug/CMakeFiles/libopc.dir/quadrat.cpp.obj">
 			<Option target="pctrain"/>
 			<Option target="pcclassify"/>
 			<Option target="pcdata"/>
@@ -338,6 +348,12 @@
 		<Unit filename="D:/PrairiePro/OpenPointClass/features.hpp">
 			<Option target="libopc"/>
 		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/helper.cpp">
+			<Option target="libopc"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/helper.hpp">
+			<Option target="libopc"/>
+		</Unit>
 		<Unit filename="D:/PrairiePro/OpenPointClass/labels.cpp">
 			<Option target="libopc"/>
 		</Unit>
@@ -366,6 +382,12 @@
 			<Option target="libopc"/>
 		</Unit>
 		<Unit filename="D:/PrairiePro/OpenPointClass/point_io.hpp">
+			<Option target="libopc"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/quadrat.cpp">
+			<Option target="libopc"/>
+		</Unit>
+		<Unit filename="D:/PrairiePro/OpenPointClass/quadrat.hpp">
 			<Option target="libopc"/>
 		</Unit>
 		<Unit filename="D:/PrairiePro/OpenPointClass/randomforest.cpp">

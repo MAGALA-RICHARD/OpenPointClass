@@ -146,13 +146,13 @@ See `./pctrain --help`.
 You can build a Docker image with the following command:
 
 ```bash
-docker build -t uav4geo/openpointclass:latest .
+docker build -t uav4geo/helpers:latest .
 ```
 
 Run the image with the following command:
 
 ```bash
-docker run -it --rm -v /dataset-path:/data uav4geo/openpointclass:latest bash
+docker run -it --rm -v /dataset-path:/data uav4geo/helpers:latest bash
 ```
 Where `/dataset-path` is the path to the directory containing the dataset files and the `model.bin` file.
 
@@ -161,8 +161,8 @@ You will be presented with a bash prompt inside the container. You can then run 
 Otherwise, you can use the commands directly with the following syntax:
 
 ```bash
-docker run -it --rm -v /dataset-path:/data uav4geo/openpointclass:latest pctrain /data/ground_truth.ply
-docker run -it --rm -v /dataset-path:/data uav4geo/openpointclass:latest pcclassify /data/dataset.ply /data/classified.ply /data/model.bin
+docker run -it --rm -v /dataset-path:/data uav4geo/helpers:latest pctrain /data/ground_truth.ply
+docker run -it --rm -v /dataset-path:/data uav4geo/helpers:latest pcclassify /data/dataset.ply /data/classified.ply /data/model.bin
 ```
 
 ## Known Issues

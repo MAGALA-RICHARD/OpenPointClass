@@ -98,7 +98,9 @@ pcdata_EXTERNAL_OBJECTS = \
 "D:/PrairiePro/OpenPointClass/cmake-build-debug/CMakeFiles/libopc.dir/labels.cpp.obj" \
 "D:/PrairiePro/OpenPointClass/cmake-build-debug/CMakeFiles/libopc.dir/model_metadata.cpp.obj" \
 "D:/PrairiePro/OpenPointClass/cmake-build-debug/CMakeFiles/libopc.dir/svm.cpp.obj" \
-"D:/PrairiePro/OpenPointClass/cmake-build-debug/CMakeFiles/libopc.dir/vendor/libsvm/svm.cpp.obj"
+"D:/PrairiePro/OpenPointClass/cmake-build-debug/CMakeFiles/libopc.dir/vendor/libsvm/svm.cpp.obj" \
+"D:/PrairiePro/OpenPointClass/cmake-build-debug/CMakeFiles/libopc.dir/helper.cpp.obj" \
+"D:/PrairiePro/OpenPointClass/cmake-build-debug/CMakeFiles/libopc.dir/quadrat.cpp.obj"
 
 pcdata.exe: CMakeFiles/pcdata.dir/pcdata.cpp.obj
 pcdata.exe: CMakeFiles/libopc.dir/classifier.cpp.obj
@@ -111,6 +113,8 @@ pcdata.exe: CMakeFiles/libopc.dir/labels.cpp.obj
 pcdata.exe: CMakeFiles/libopc.dir/model_metadata.cpp.obj
 pcdata.exe: CMakeFiles/libopc.dir/svm.cpp.obj
 pcdata.exe: CMakeFiles/libopc.dir/vendor/libsvm/svm.cpp.obj
+pcdata.exe: CMakeFiles/libopc.dir/helper.cpp.obj
+pcdata.exe: CMakeFiles/libopc.dir/quadrat.cpp.obj
 pcdata.exe: CMakeFiles/pcdata.dir/build.make
 pcdata.exe: C:/Program\ Files/JetBrains/CLion\ 2022.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/libgomp.dll.a
 pcdata.exe: C:/Program\ Files/JetBrains/CLion\ 2022.3.2/bin/mingw/x86_64-w64-mingw32/lib/libmingwthrd.a

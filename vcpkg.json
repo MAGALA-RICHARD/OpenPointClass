@@ -9,5 +9,9 @@
       "name": "pdal",
       "default-features": false
     }
+
+  ],
+  "overrides": [
+    { "name": "pdal", "version": "2.10.1#1" }
   ]
 }
