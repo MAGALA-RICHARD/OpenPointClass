@@ -1,0 +1,88 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-aad39ec29d4d88d40d48.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "opc",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "libopc::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-libopc-Debug-58e5999eacb1be1fad5c.json",
+					"name" : "libopc",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pcclassify::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pcclassify-Debug-fc023f87777f158301d4.json",
+					"name" : "pcclassify",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pcdata::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pcdata-Debug-786982e8c71ca50bf9ee.json",
+					"name" : "pcdata",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pctrain::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pctrain-Debug-f35614ce617c715a3f88.json",
+					"name" : "pctrain",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/PrairiePro/OpenPointClass/cmake-build-debug",
+		"source" : "D:/PrairiePro/OpenPointClass"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
