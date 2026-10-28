@@ -10,16 +10,16 @@ pcdata C++17 rewrite — integration notes
 * hag_status: 0 ground, 1 finite nonzero estimate, 2 non-ground zero (ambiguous),
   3 nonfinite. Status 1 is not proof of adequate ground support. Unlimited search
   can still interpolate from distant ground points. Validate on surveyed ground.
-* CSV keeps original OPC coordinates and labels. PDAL HAG uses original PDAL XYZ;
+* Parquet keeps original OPC coordinates and labels. PDAL HAG uses original PDAL XYZ;
   the reader must maintain PointSet/pointView row correspondence. This rewrite
   preserves IDs through the HAG stages, but cannot verify the absent reader code.
 * No outlier removal, clipping of negative HAG, or change to OPC feature formulas.
-* CSV numbers use shortest round-trip representations. Integer fields remain
-  exact. An all-zero numeric column may be inferred as integer by pandas; use
-  dtype={"height_above_ground": float} if a float dtype is required.
+* Parquet preserves numeric types: IDs and integer scalar fields remain integer;
+  coordinates, HAG, and OpenPointClass features are float64. Non-finite feature/HAG
+  values are written as nulls.
 * Output must not already exist. Failed writes leave a .partial file for diagnosis;
   remove/rename it before retrying. Do not run concurrent jobs to the same output.
-* Build with C++17 and a library supporting floating-point std::to_chars.
+* Build with C++17 and Apache Arrow/Parquet <= 22.x (Arrow 23+ requires C++20).
 * Full integration/build and measured speedup require your OPC headers and data.
 */
 // Extract OpenPointClass multiscale features while preserving selected
@@ -59,7 +59,12 @@ pcdata C++17 rewrite — integration notes
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
+#include <variant>
 #include <vector>
+
+#include <arrow/api.h>
+#include <arrow/io/api.h>
+#include <parquet/arrow/writer.h>
 
 #ifdef WITH_PDAL
 #include <pdal/Dimension.hpp>
@@ -158,7 +163,7 @@ namespace {
         if (fs::exists(requested) && !fs::is_directory(requested))
             throw std::invalid_argument("--output must be a directory when multiple inputs are supplied");
         fs::create_directories(requested);
-        return requested / (input.stem().string() + "_features.csv");
+        return requested / (input.stem().string() + "_features.parquet");
     }
 
     std::vector<std::string> uniqueFeatureNames(const std::vector<FeaturePtr>& features) {
@@ -385,42 +390,57 @@ HagData computeHag(const PointSet& source, const HagOptions& cfg) {
 
 #endif
 
-// Locale-independent, buffered numeric CSV output (including exact integer IDs).
-    class CsvWriter {
-        std::ofstream stream;
-        std::string buffer;
-    public:
-        explicit CsvWriter(const fs::path& path) : stream(path,std::ios::binary|std::ios::trunc) {
-            if (!stream) throw std::runtime_error("Cannot open " + path.string());
-            stream.exceptions(std::ios::badbit|std::ios::failbit);
-            buffer.reserve(1<<20);
-        }
-        CsvWriter& operator<<(const std::string& value) { buffer+=value; return *this; }
-        CsvWriter& operator<<(const char* value) { buffer+=value; return *this; }
-        CsvWriter& operator<<(char value) {
-            buffer+=value;
-            if (value=='\n' && buffer.size()>=(1<<20)) flush();
-            return *this;
-        }
-        template<class T> CsvWriter& operator<<(T value) {
-            if constexpr (std::is_floating_point_v<T>) if (!std::isfinite(value)) return *this;
-            std::array<char,128> text;
-            auto result=std::to_chars(text.data(),text.data()+text.size(),value);
-            if (result.ec!=std::errc{}) throw std::runtime_error("Numeric CSV conversion failed");
-            buffer.append(text.data(),result.ptr);
-            return *this;
-        }
-        void flush() { stream.write(buffer.data(),static_cast<std::streamsize>(buffer.size())); buffer.clear(); }
-        void close() { flush(); stream.flush(); stream.close(); }
+// Chunked Parquet output. Feature evaluation is unchanged; only serialization differs.
+    void checkArrow(const arrow::Status& status, const std::string& what) {
+        if (!status.ok()) throw std::runtime_error(what + ": " + status.ToString());
+    }
+
+    template<class T>
+    T arrowValue(arrow::Result<T> result, const std::string& what) {
+        if (!result.ok()) throw std::runtime_error(what + ": " + result.status().ToString());
+        return std::move(result).ValueOrDie();
+    }
+
+#ifdef WITH_PDAL
+    enum class ScalarKind { Unsigned, Signed, Floating };
+
+    struct ScalarColumn {
+        SelectedDimension dim;
+        ScalarKind kind;
     };
 
-    void writeCsv(const fs::path& output, const fs::path& input, const PointSet& source,
-                  const std::vector<FeaturePtr>& features,
-                  const std::vector<std::string>& requestedFields, const HagData& hag) {
+    ScalarKind scalarKind(pdal::Dimension::Type type) {
+        using Type = pdal::Dimension::Type;
+        switch (type) {
+            case Type::Unsigned8: case Type::Unsigned16: case Type::Unsigned32: case Type::Unsigned64:
+                return ScalarKind::Unsigned;
+            case Type::Signed8: case Type::Signed16: case Type::Signed32: case Type::Signed64:
+                return ScalarKind::Signed;
+            default:
+                return ScalarKind::Floating;
+        }
+    }
+#endif
+
+    std::shared_ptr<arrow::Array> finishBuilder(arrow::ArrayBuilder& builder, const std::string& name) {
+        std::shared_ptr<arrow::Array> out;
+        checkArrow(builder.Finish(&out), "Finish Parquet column '" + name + "'");
+        return out;
+    }
+
+    void writeParquet(const fs::path& output, const fs::path& input, const PointSet& source,
+                      const std::vector<FeaturePtr>& features,
+                      const std::vector<std::string>& requestedFields, const HagData& hag,
+                      std::size_t batchSize = 250000) {
         if (output.has_parent_path()) fs::create_directories(output.parent_path());
+        if (!batchSize) throw std::invalid_argument("Parquet batch size must be greater than zero");
 
 #ifdef WITH_PDAL
         const auto selected = selectDimensions(source, requestedFields);
+        std::vector<ScalarColumn> scalarColumns;
+        scalarColumns.reserve(selected.size());
+        for (const auto& dim : selected)
+            scalarColumns.push_back({dim, scalarKind(source.pointView->layout()->dimType(dim.id))});
 #else
         if (!requestedFields.empty())
             throw std::runtime_error("--fields requires OpenPointClass to be built with PDAL");
@@ -431,14 +451,15 @@ HagData computeHag(const PointSet& source, const HagOptions& cfg) {
             throw std::runtime_error("Incomplete OpenPointClass voxel mapping");
         if (!hag.empty() && (hag.values.size()!=source.count() || hag.status.size()!=source.count()))
             throw std::runtime_error("Incomplete HAG mapping");
-        const fs::path temporary=output.string()+".partial";
-        if (fs::exists(temporary)) throw std::runtime_error("Partial output already exists: " + temporary.string());
-        const std::string sourceName=csvField(input.filename().string());
 
+        const fs::path temporary = output.string() + ".partial";
+        if (fs::exists(temporary)) throw std::runtime_error("Partial output already exists: " + temporary.string());
+        const std::string sourceName = input.filename().string();
         const auto featureNames = uniqueFeatureNames(features);
+
         std::unordered_set<std::string> columns={"source","point_id","voxel_id","x","y","z","classification"};
         auto reserveColumn=[&](const std::string& name) {
-            if (!columns.insert(lowerCopy(name)).second) throw std::runtime_error("Duplicate CSV column: "+name);
+            if (!columns.insert(lowerCopy(name)).second) throw std::runtime_error("Duplicate Parquet column: "+name);
         };
 #ifdef WITH_PDAL
         for (const auto& dim:selected) reserveColumn(dim.outputName);
@@ -446,58 +467,158 @@ HagData computeHag(const PointSet& source, const HagOptions& cfg) {
         if (!hag.empty()) { reserveColumn("height_above_ground"); reserveColumn("hag_status"); }
         for (const auto& name:featureNames) reserveColumn(name);
 
-        CsvWriter stream(temporary);
-        stream << "source,point_id,voxel_id,x,y,z,classification";
+        std::vector<std::shared_ptr<arrow::Field>> fields = {
+                arrow::field("source", arrow::utf8(), false),
+                arrow::field("point_id", arrow::uint64(), false),
+                arrow::field("voxel_id", arrow::uint64(), false),
+                arrow::field("x", arrow::float64(), false),
+                arrow::field("y", arrow::float64(), false),
+                arrow::field("z", arrow::float64(), false),
+                arrow::field("classification", arrow::int32(), true)
+        };
 #ifdef WITH_PDAL
-        for (const auto& dim : selected) stream << ',' << csvField(dim.outputName);
+        for (const auto& col : scalarColumns) {
+            const auto type = col.kind==ScalarKind::Unsigned ? arrow::uint64() :
+                              col.kind==ScalarKind::Signed ? arrow::int64() : arrow::float64();
+            fields.push_back(arrow::field(col.dim.outputName, type, true));
+        }
 #endif
-        if (!hag.empty()) stream << ",height_above_ground,hag_status";
-        for (const auto& name : featureNames) stream << ',' << csvField(name);
-        stream << '\n';
+        if (!hag.empty()) {
+            fields.push_back(arrow::field("height_above_ground", arrow::float64(), true));
+            fields.push_back(arrow::field("hag_status", arrow::uint8(), false));
+        }
+        for (const auto& name : featureNames) fields.push_back(arrow::field(name, arrow::float64(), true));
+        const auto schema = arrow::schema(fields);
 
-        for (std::size_t pointId = 0; pointId < source.count(); ++pointId) {
-            if (pointId >= source.pointMap.size())
-                throw std::runtime_error("OpenPointClass did not create a voxel mapping for every point");
+        auto outfile = arrowValue(arrow::io::FileOutputStream::Open(temporary.string()), "Open Parquet output");
+        parquet::WriterProperties::Builder propsBuilder;
+        propsBuilder.compression(arrow::Compression::SNAPPY);
+        propsBuilder.enable_dictionary();
+        auto props = propsBuilder.build();
 
-            const std::size_t voxelId = source.pointMap[pointId];
-            if (!source.base || voxelId >= source.base->count())
-                throw std::runtime_error("Invalid voxel ID in OpenPointClass point map");
+        parquet::ArrowWriterProperties::Builder arrowPropsBuilder;
+        arrowPropsBuilder.store_schema();
+        auto arrowProps = arrowPropsBuilder.build();
+        auto writer = arrowValue(parquet::arrow::FileWriter::Open(*schema, arrow::default_memory_pool(), outfile, props, arrowProps),
+                                 "Create Parquet writer");
 
-            stream << sourceName << ',' << pointId << ',' << voxelId
-                   << ',' << source.points[pointId][0]
-                   << ',' << source.points[pointId][1]
-                   << ',' << source.points[pointId][2] << ',';
+        for (std::size_t begin=0; begin<source.count(); begin+=batchSize) {
+            const std::size_t end=std::min(source.count(), begin+batchSize);
+            const std::size_t n=end-begin;
 
-            const int classification = externalClassification(source, pointId);
-            if (classification >= 0) stream << classification;
+            arrow::StringBuilder sourceBuilder;
+            arrow::UInt64Builder pointBuilder, voxelBuilder;
+            arrow::DoubleBuilder xBuilder, yBuilder, zBuilder;
+            arrow::Int32Builder classificationBuilder;
 
 #ifdef WITH_PDAL
-            for (const auto& dim : selected) {
-      stream << ',';
-      const auto type=source.pointView->layout()->dimType(dim.id);
-      using Type=pdal::Dimension::Type;
-      switch(type) {
-        case Type::Unsigned8: case Type::Unsigned16: case Type::Unsigned32: case Type::Unsigned64:
-          stream << source.pointView->getFieldAs<std::uint64_t>(dim.id,pointId); break;
-        case Type::Signed8: case Type::Signed16: case Type::Signed32: case Type::Signed64:
-          stream << source.pointView->getFieldAs<std::int64_t>(dim.id,pointId); break;
-        default: stream << source.pointView->getFieldAs<double>(dim.id,pointId); break;
-      }
-    }
+            std::vector<std::unique_ptr<arrow::ArrayBuilder>> scalarBuilders;
+            scalarBuilders.reserve(scalarColumns.size());
+            for (const auto& col : scalarColumns) {
+                if (col.kind==ScalarKind::Unsigned) scalarBuilders.push_back(std::make_unique<arrow::UInt64Builder>());
+                else if (col.kind==ScalarKind::Signed) scalarBuilders.push_back(std::make_unique<arrow::Int64Builder>());
+                else scalarBuilders.push_back(std::make_unique<arrow::DoubleBuilder>());
+            }
 #endif
-
+            std::unique_ptr<arrow::DoubleBuilder> hagBuilder;
+            std::unique_ptr<arrow::UInt8Builder> hagStatusBuilder;
             if (!hag.empty()) {
-                stream << ',';
-                stream << hag.values[pointId] << ',' << static_cast<unsigned>(hag.status[pointId]);
+                hagBuilder=std::make_unique<arrow::DoubleBuilder>();
+                hagStatusBuilder=std::make_unique<arrow::UInt8Builder>();
+            }
+            std::vector<std::unique_ptr<arrow::DoubleBuilder>> featureBuilders;
+            featureBuilders.reserve(features.size());
+            for (std::size_t i=0;i<features.size();++i) featureBuilders.push_back(std::make_unique<arrow::DoubleBuilder>());
+
+            checkArrow(sourceBuilder.Reserve(static_cast<int64_t>(n)), "Reserve source column");
+            checkArrow(pointBuilder.Reserve(static_cast<int64_t>(n)), "Reserve point_id column");
+            checkArrow(voxelBuilder.Reserve(static_cast<int64_t>(n)), "Reserve voxel_id column");
+            checkArrow(xBuilder.Reserve(static_cast<int64_t>(n)), "Reserve x column");
+            checkArrow(yBuilder.Reserve(static_cast<int64_t>(n)), "Reserve y column");
+            checkArrow(zBuilder.Reserve(static_cast<int64_t>(n)), "Reserve z column");
+            checkArrow(classificationBuilder.Reserve(static_cast<int64_t>(n)), "Reserve classification column");
+#ifdef WITH_PDAL
+            for (auto& b:scalarBuilders) checkArrow(b->Reserve(static_cast<int64_t>(n)), "Reserve scalar column");
+#endif
+            if (hagBuilder) {
+                checkArrow(hagBuilder->Reserve(static_cast<int64_t>(n)), "Reserve HAG column");
+                checkArrow(hagStatusBuilder->Reserve(static_cast<int64_t>(n)), "Reserve HAG status column");
+            }
+            for (auto& b:featureBuilders) checkArrow(b->Reserve(static_cast<int64_t>(n)), "Reserve feature column");
+
+            for (std::size_t pointId=begin; pointId<end; ++pointId) {
+                if (pointId>=source.pointMap.size()) throw std::runtime_error("OpenPointClass did not create a voxel mapping for every point");
+                const std::size_t voxelId=source.pointMap[pointId];
+                if (!source.base || voxelId>=source.base->count()) throw std::runtime_error("Invalid voxel ID in OpenPointClass point map");
+
+                checkArrow(sourceBuilder.Append(sourceName), "Append source");
+                checkArrow(pointBuilder.Append(static_cast<std::uint64_t>(pointId)), "Append point_id");
+                checkArrow(voxelBuilder.Append(static_cast<std::uint64_t>(voxelId)), "Append voxel_id");
+                checkArrow(xBuilder.Append(source.points[pointId][0]), "Append x");
+                checkArrow(yBuilder.Append(source.points[pointId][1]), "Append y");
+                checkArrow(zBuilder.Append(source.points[pointId][2]), "Append z");
+
+                const int classification=externalClassification(source, pointId);
+                if (classification>=0) checkArrow(classificationBuilder.Append(classification), "Append classification");
+                else checkArrow(classificationBuilder.AppendNull(), "Append null classification");
+
+#ifdef WITH_PDAL
+                for (std::size_t j=0;j<scalarColumns.size();++j) {
+                    const auto& col=scalarColumns[j];
+                    if (col.kind==ScalarKind::Unsigned) {
+                        auto* b=static_cast<arrow::UInt64Builder*>(scalarBuilders[j].get());
+                        checkArrow(b->Append(source.pointView->getFieldAs<std::uint64_t>(col.dim.id,pointId)), "Append scalar");
+                    } else if (col.kind==ScalarKind::Signed) {
+                        auto* b=static_cast<arrow::Int64Builder*>(scalarBuilders[j].get());
+                        checkArrow(b->Append(source.pointView->getFieldAs<std::int64_t>(col.dim.id,pointId)), "Append scalar");
+                    } else {
+                        auto* b=static_cast<arrow::DoubleBuilder*>(scalarBuilders[j].get());
+                        const double value=source.pointView->getFieldAs<double>(col.dim.id,pointId);
+                        if (std::isfinite(value)) checkArrow(b->Append(value), "Append scalar");
+                        else checkArrow(b->AppendNull(), "Append null scalar");
+                    }
+                }
+#endif
+                if (hagBuilder) {
+                    const double value=hag.values[pointId];
+                    if (std::isfinite(value)) checkArrow(hagBuilder->Append(value), "Append HAG");
+                    else checkArrow(hagBuilder->AppendNull(), "Append null HAG");
+                    checkArrow(hagStatusBuilder->Append(hag.status[pointId]), "Append HAG status");
+                }
+                for (std::size_t j=0;j<features.size();++j) {
+                    const double value=features[j]->getValue(voxelId);
+                    if (std::isfinite(value)) checkArrow(featureBuilders[j]->Append(value), "Append feature");
+                    else checkArrow(featureBuilders[j]->AppendNull(), "Append null feature");
+                }
             }
 
-            // All existing OpenPointClass features remain exactly as returned by getFeatures().
-            for (const auto& feature : features) stream << ',' << feature->getValue(voxelId);
+            std::vector<std::shared_ptr<arrow::Array>> arrays;
+            arrays.reserve(fields.size());
+            arrays.push_back(finishBuilder(sourceBuilder,"source"));
+            arrays.push_back(finishBuilder(pointBuilder,"point_id"));
+            arrays.push_back(finishBuilder(voxelBuilder,"voxel_id"));
+            arrays.push_back(finishBuilder(xBuilder,"x"));
+            arrays.push_back(finishBuilder(yBuilder,"y"));
+            arrays.push_back(finishBuilder(zBuilder,"z"));
+            arrays.push_back(finishBuilder(classificationBuilder,"classification"));
+#ifdef WITH_PDAL
+            for (std::size_t j=0;j<scalarBuilders.size();++j)
+                arrays.push_back(finishBuilder(*scalarBuilders[j],scalarColumns[j].dim.outputName));
+#endif
+            if (hagBuilder) {
+                arrays.push_back(finishBuilder(*hagBuilder,"height_above_ground"));
+                arrays.push_back(finishBuilder(*hagStatusBuilder,"hag_status"));
+            }
+            for (std::size_t j=0;j<featureBuilders.size();++j)
+                arrays.push_back(finishBuilder(*featureBuilders[j],featureNames[j]));
 
-            stream << '\n';
-
+            const auto batch=arrow::RecordBatch::Make(schema, static_cast<int64_t>(n), arrays);
+            auto table=arrowValue(arrow::Table::FromRecordBatches(schema,{batch}), "Build Parquet batch table");
+            checkArrow(writer->WriteTable(*table, static_cast<int64_t>(n)), "Write Parquet row group");
         }
-        stream.close();
+
+        checkArrow(writer->Close(), "Close Parquet writer");
+        checkArrow(outfile->Close(), "Close Parquet output");
         fs::rename(temporary,output);
     }
 
@@ -575,8 +696,8 @@ HagData computeHag(const PointSet& source, const HagOptions& cfg) {
         if (!hag.empty()) std::cout << " + 1 HAG feature";
         std::cout << " to " << output << '\n';
 
-        { Timer timer("evaluate features and export CSV");
-            writeCsv(output, input, *pointSet, features, requestedFields, hag); }
+        { Timer timer("evaluate features and export Parquet");
+            writeParquet(output, input, *pointSet, features, requestedFields, hag); }
     }
 
 }  // namespace
@@ -588,8 +709,8 @@ int main(int argc, char** argv) {
 
     options.add_options()
             ("i,input", "Input point cloud(s)", cxxopts::value<std::vector<std::string>>())
-            ("o,output", "Output CSV, or directory for multiple inputs",
-             cxxopts::value<std::string>()->default_value("features.csv"))
+            ("o,output", "Output Parquet file, or directory for multiple inputs",
+             cxxopts::value<std::string>()->default_value("features.parquet"))
             ("r,resolution", "OpenPointClass first-scale resolution in metres (-1 = estimate)",
              cxxopts::value<double>()->default_value("-1"))
             ("s,scales", "Number of OpenPointClass scales",

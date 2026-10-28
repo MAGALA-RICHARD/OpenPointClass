@@ -8,10 +8,18 @@
     {
       "name": "pdal",
       "default-features": false
+    },
+    {
+      "name": "arrow",
+      "features": [
+        "parquet"
+      ]
     }
-
   ],
   "overrides": [
-    { "name": "pdal", "version": "2.10.1#1" }
+    {
+      "name": "pdal",
+      "version": "2.10.1#1"
+    }
   ]
 }

@@ -14,6 +14,9 @@
 # EXTERNAL cache entries
 ########################
 
+//The directory containing a CMake configuration file for Arrow.
+Arrow_DIR:PATH=Arrow_DIR-NOTFOUND
+
 //Build pcclassify
 BUILD_PCCLASSIFY:BOOL=ON
 

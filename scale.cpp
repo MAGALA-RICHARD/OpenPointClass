@@ -290,6 +290,7 @@ Eigen::Vector3f Scale::computeCentroid(const std::vector<size_t> &pointIds) {
     return centroid;
 }
 
+
 std::vector<Scale *> computeScales(size_t numScales, PointSet *pSet, double startResolution, double radius) {
     std::vector<Scale *> scales(numScales, nullptr);
 

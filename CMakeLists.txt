@@ -37,6 +37,8 @@ endif()
 
 find_package(OpenMP REQUIRED)
 find_package(Eigen3 REQUIRED)
+find_package(Arrow REQUIRED)
+find_package(Parquet REQUIRED)
 
 
 if (WITH_PDAL)
@@ -150,7 +152,8 @@ set(BUILD_PCDATA ON CACHE BOOL "Build pcdata feature extractor")
 
 if(BUILD_PCDATA)
     add_executable(pcdata pcdata.cpp)
-    target_link_libraries(pcdata PRIVATE libopc)
+    target_link_libraries(pcdata PRIVATE libopc Arrow::arrow_shared Parquet::parquet_shared)
+    target_compile_features(pcdata PRIVATE cxx_std_20)
 endif()
 
 if(WITH_PDAL)
