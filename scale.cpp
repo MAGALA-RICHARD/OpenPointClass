@@ -22,8 +22,7 @@ void Scale::init() {
 
         if (id == 1) {
             avgHsv.resize(pSet->count());
-        }
-    }
+        } }
 
     computeScaledSet();
 }
