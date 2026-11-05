@@ -1,5 +1,5 @@
 #include "scale.hpp"
-
+// This is not altered
 Scale::Scale(const size_t id, PointSet *pSet, const double resolution, const int kNeighbors, const double radius) :
     id(id), pSet(pSet), scaledSet(new PointSet()), resolution(resolution), kNeighbors(kNeighbors), radius(radius) {
 
